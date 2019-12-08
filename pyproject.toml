@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "movieratingai"
+version = "0.1.0"
+description = ""
+authors = ["Konrad Linkowski"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+pandas = "^0.25.3"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.7"
+pylint = "^2.4"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
