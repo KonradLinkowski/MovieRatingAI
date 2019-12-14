@@ -13,21 +13,39 @@ def save(data_frame, file_name):
     data_frame.to_csv(f'{save_dir}/{file_name}.csv', header=True, index=False)
 
 
-columns = ['budget',
-           'id',
-           'original_language',
-           'original_title',
-           'popularity',
-           'revenue',
-           'status',
-           'vote_average',
-           'vote_count'
-           ]
+columns = [
+    'budget',
+    'original_language',
+    'popularity',
+    'revenue',
+    'status',
+    'vote_average',
+    'vote_count'
+]
+types = {
+    'budget': 'int',
+    'status': 'category',
+    'original_language': 'category'
+}
 movies = pd.read_csv('dataset/movies_metadata.csv',
                      low_memory=False,
                      skipinitialspace=True,
-                     usecols=columns
+                     usecols=columns,
+                     dtype=types,
                      ).sample(frac=1).reset_index(drop=True)
+cols_to_norm = [
+    'budget',
+    'popularity',
+    'revenue',
+    'vote_average',
+    'vote_count'
+]
+
+movies[cols_to_norm] = movies[cols_to_norm].apply(
+    lambda x: (x - x.min()) / (x.max() - x.min())
+)
+
+movies = pd.get_dummies(movies, columns=['status', 'original_language'])
 
 valid_len = movies.shape[0] // 10
 validation = movies.iloc[:valid_len]
