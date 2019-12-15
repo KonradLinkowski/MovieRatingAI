@@ -1,3 +1,5 @@
 .vscode
 *.zip
 __pycache__
+*.h5
+plots*
