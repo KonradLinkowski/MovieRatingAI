@@ -37,7 +37,6 @@ cols_to_norm = [
     'budget',
     'popularity',
     'revenue',
-    'vote_average',
     'vote_count'
 ]
 

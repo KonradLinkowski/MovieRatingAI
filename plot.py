@@ -6,6 +6,7 @@ plot_dir = 'plots/'
 if not os.path.exists(plot_dir):
     os.makedirs(plot_dir)
 
+
 def plot_history(history, file_name='history.png'):
     plt.clf()
     hist = pd.DataFrame(history.history)
@@ -29,7 +30,7 @@ def plot_history(history, file_name='history.png'):
     plt.plot(hist['epoch'], hist['val_mean_squared_error'],
              label='Val Error')
     plt.legend()
-    plt.ylim([0, 20])
+    plt.ylim([0, plt.ylim()[1]])
     plt.savefig(plot_dir + file_name)
 
 
