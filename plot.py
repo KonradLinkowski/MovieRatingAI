@@ -15,9 +15,9 @@ def plot_history(history, file_name='history.png'):
     plt.figure()
     plt.xlabel('Epoch')
     plt.ylabel('Mean Abs Error [Score]')
-    plt.plot(hist['epoch'], hist['mean_absolute_error'],
+    plt.plot(hist['epoch'], hist['mae'],
              label='Train Error')
-    plt.plot(hist['epoch'], hist['val_mean_absolute_error'],
+    plt.plot(hist['epoch'], hist['val_mae'],
              label='Val Error')
     plt.legend()
     plt.ylim([0, 10])
@@ -25,9 +25,9 @@ def plot_history(history, file_name='history.png'):
     plt.figure()
     plt.xlabel('Epoch')
     plt.ylabel('Mean Square Error [$Score^2$]')
-    plt.plot(hist['epoch'], hist['mean_squared_error'],
+    plt.plot(hist['epoch'], hist['mse'],
              label='Train Error')
-    plt.plot(hist['epoch'], hist['val_mean_squared_error'],
+    plt.plot(hist['epoch'], hist['val_mse'],
              label='Val Error')
     plt.legend()
     plt.ylim([0, plt.ylim()[1]])
