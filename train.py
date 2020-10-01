@@ -88,6 +88,6 @@ def train(EPOCHS=1000):
 if __name__ == "__main__":
     epochs = os.sys.argv[-1]
     if (epochs.isdigit()):
-        train(epochs)
+        train(int(epochs))
     else:
         raise TypeError("epochs must be an int")
