@@ -5,6 +5,7 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tqdm import tqdm
 import plot
+import argparse
 
 load_dir = 'train_data'
 if not os.path.exists(load_dir):
@@ -86,8 +87,11 @@ def train(EPOCHS=1000):
 
 
 if __name__ == "__main__":
-    epochs = os.sys.argv[-1]
-    if (epochs.isdigit()):
-        train(int(epochs))
-    else:
-        raise TypeError("epochs must be an int")
+    # Construct the argument parser
+    parser = argparse.ArgumentParser()
+
+    # Set epochs argument with default 1000
+    parser.add_argument("-e", "--epochs", type=int, default=1000)
+    args = vars(parser.parse_args())
+
+    train(args['epochs'])
